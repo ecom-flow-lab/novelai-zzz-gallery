@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="NovelAI V5 Full 的绝区零角色单次生成样张，按角色与阵营浏览。">
+  <title>NovelAI × 绝区零</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="gallery.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <header class="intro">
+      <div class="intro-title"><h1 id="page-title">NovelAI × 绝区零</h1><p class="date" id="gallery-date">2026-10-24</p></div>
+      <p class="description">看看同一套绘图提示下，角色会是什么样。</p>
+      <div class="intro-bottom"><p id="sample-info" class="sample-info">NovelAI V5 Full / 768 × 1152 / 每位角色单次样张</p><a id="download-all" class="download-all" href="all-images.zip" download>下载全部原图 <span aria-hidden="true">↧</span></a></div>
+      <p class="scope-note">本页只覆盖此次修正固定外貌的 55 位角色，并非全部角色。样张用于分享此次生成结果，不代表官方结论或适配评分。</p>
+    </header>
+    <section class="collection" aria-label="角色样张">
+      <form id="filters" class="filters" role="search">
+        <div class="search-field"><label class="sr-only" for="search">搜索角色名</label><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><input id="search" name="search" type="search" placeholder="搜索角色名" autocomplete="off"></div>
+        <div class="category-field"><label class="sr-only" for="category">按阵营筛选</label><select id="category" name="category"><option value="">全部阵营</option></select></div>
+        <fieldset class="subject-filter"><legend class="sr-only">按角色筛选</legend><label><input name="subject" type="radio" value="" checked><span>全部</span></label><label><input name="subject" type="radio" value="girl"><span>女性</span></label><label><input name="subject" type="radio" value="boy"><span>男性</span></label></fieldset>
+      </form>
+      <div class="results-line"><p id="result-count" aria-live="polite">正在载入样张…</p><button id="reset-filters" class="text-button" type="button" hidden>清除筛选</button></div>
+      <div id="gallery" class="gallery" aria-label="角色图片列表"></div>
+      <div id="empty-state" class="empty-state" hidden><p>没有找到匹配的角色</p><p>试试其他名字，或清除筛选查看全部样张。</p></div>
+      <p id="load-error" class="load-error" role="alert" hidden>样张信息未能加载，请刷新页面重试。</p>
+      <noscript><p>请启用 JavaScript 以浏览、搜索和放大角色样张。也可以直接下载上方的全部原图。</p></noscript>
+    </section>
+    <footer class="footer">保留单次生成的原始结果，方便自行观察与比较。</footer>
+  </main>
+  <dialog id="image-dialog" aria-labelledby="dialog-title">
+    <div class="viewer">
+      <header class="viewer-header"><div><h2 id="dialog-title"></h2><p id="dialog-category"></p></div><button id="close-dialog" class="icon-button" type="button" aria-label="关闭放大图片">×</button></header>
+      <div class="viewer-image-wrap"><img id="original-image" alt=""><p id="original-error" class="original-error" role="alert" hidden>原图未能加载，请重试或直接下载。</p></div>
+      <footer class="viewer-footer"><div class="viewer-navigation"><button id="previous-image" type="button" aria-label="上一张">‹</button><span id="image-position"></span><button id="next-image" type="button" aria-label="下一张">›</button></div><a id="download-original" class="download-original" download>下载原图 <span aria-hidden="true">↧</span></a></footer>
+    </div>
+  </dialog>
+</body>
+</html>
